@@ -3,23 +3,79 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Trophy Guide — GTA 6 platinum tracker</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="hero">
+  <div>
+    <p class="kicker">GRAND THEFT AUTO VI &middot; PLAYSTATION 5 &middot; OFFLINE GUIDE</p>
+    <h1>Leonida Trophy Guide</h1>
+    <p class="sub">All 55 trophies, a cited guide for each one, a road to the platinum — and a tracker that saves your progress on this device.</p>
+  </div>
+  <div class="platinum-box" id="platinumBox">
+    <div class="big" id="progressText">0 of 55 earned</div>
+    <div class="bar" role="progressbar" aria-label="Progress to platinum"><div id="progressFill"></div></div>
+    <div class="grades" id="gradeCounts"></div>
+    <p class="platinum-note">~200 hours &middot; difficulty 4/10 &middot; 1 playthrough &middot; 0 online trophies &middot; cheats disable trophies</p>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+<nav class="tabs" aria-label="Guide sections">
+  <button type="button" class="tab active" data-tab="tracker">Tracker</button>
+  <button type="button" class="tab" data-tab="roadmap">Roadmap</button>
+  <button type="button" class="tab" data-tab="missables">Missables</button>
+</nav>
+<main>
+<section id="tab-tracker" class="panel">
+  <div class="controls">
+    <label class="search">Search <input id="search" type="search" placeholder="Search a trophy or its guide…" autocomplete="off"></label>
+    <label>Kind <select id="kind"><option value="all">All kinds</option><option value="story">Story</option><option value="missable">Missable</option><option value="collectibles">Collectibles</option><option value="activities">Activities</option><option value="online">Online</option></select></label>
+    <label>Grade <select id="grade"><option value="all">All grades</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
+    <label>Sort <select id="sort"><option value="roadmap">Roadmap order</option><option value="grade">Grade</option><option value="name">Name A–Z</option></select></label>
+    <label class="check"><input id="spoiler" type="checkbox" checked> Spoiler-free</label>
+    <label class="check"><input id="earnedOnly" type="checkbox"> Earned only</label>
+    <label class="check"><input id="hideEarned" type="checkbox"> Hide earned</label>
+    <button id="export" type="button">Export progress</button>
+    <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
+    <button id="reset" type="button">Reset</button>
+  </div>
+  <p class="hint" id="onlineNote">There are no online trophies in GTA 6 — every trophy here is earned offline, in single-player. Spoiler-free is on: story trophies stay hidden until you earn them.</p>
+  <div id="guidePane" class="guide-pane" hidden>
+    <div class="guide-head"><h2 id="guideName"></h2><span id="guideBadges"></span><button id="guideClose" type="button" aria-label="Close guide">&times;</button></div>
+    <p class="guide-desc" id="guideDesc"></p>
+    <p class="guide-text" id="guideText"></p>
+    <p class="guide-warn" id="guideWarn" hidden></p>
+    <p class="guide-sources">Sources: <span id="guideSources"></span></p>
+  </div>
+  <p class="count" id="listCount"></p>
+  <ul class="trophies" id="rows"></ul>
+  <p class="empty" id="emptyNote" hidden>No trophies match these filters. Try clearing the search or choosing All kinds.</p>
+</section>
+<section id="tab-roadmap" class="panel" hidden>
+  <h2>The road to the platinum</h2>
+  <p>PowerPyx rates the whole list 4/10 and about 200 hours, in one playthrough, with no online trophies. There is no mission replay, so keep a manual save at the start and end of each chapter. Cheats disable trophies and saving — keep them off for the whole run.</p>
+  <ol class="stages">
+    <li><h3>Stage 1 — Story + optional missions (60–80 hours)</h3><p>Finish Chapters 1–4 and the final mission. Do the Chapter 1 meditation FIRST, the first time it is offered at Jason's house — it is the only missable step in the game. As you travel, scan vehicles and study animals through binoculars; that progress already counts toward the 100% checklist.</p><p class="stage-trophies" data-stage="1"></p></li>
+    <li><h3>Stage 2 — Cleanup and 100% Completion (~100 hours)</h3><p>After the story, the checklist opens at Progress &gt; Stats &gt; 100% Completion. It is lenient — about 60% true completion. You need any 70 of 80 challenges, 200 of 277 base vehicles scanned, and 100 of 255 animals studied, plus the story and the remaining checklist items. Finish the collectibles, activities and side strands you have left.</p><p class="stage-trophies" data-stage="2"></p></li>
+    <li><h3>Stage 3 — Strangers, miscellaneous and the platinum (~10 hours)</h3><p>Finish the 8 stranger strands, the last robberies and the vague trophies once guides have pinned them down. When the other 54 are earned, the platinum pops.</p><p class="stage-trophies" data-stage="3"></p></li>
+  </ol>
+  <p class="roadmap-note">Trophy counts: Stage 1 earns the story trophies, Stage 2 earns A Long Road and most collectibles and activities, Stage 3 earns the rest. The exact split is shown under each stage.</p>
+</section>
+<section id="tab-missables" class="panel" hidden>
+  <h2>Missables — only one trophy can be missed</h2>
+  <div class="missable-card">
+    <p class="missable-flag">⚠ MISSABLE — THE ONLY ONE</p>
+    <h3>Positive Mental Attitude</h3>
+    <p class="missable-desc">Meditate at every spot across Leonida — 18 spots in 10 locations, as Jason and Lucia.</p>
+    <p>The first meditation spot is offered at Jason's house in Chapter 1. It becomes permanently unavailable after that chapter, so do it the first time it is offered, before you finish Chapter 1. Every other spot can be done in free-roam after the story.</p>
+    <p>PowerPyx and GTABase agree: this is the only potentially missable trophy in the list. Everything else is earnable in free-roam after the story ends.</p>
+    <p class="guide-sources">Sources: <a href="https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/">Exophase — GTA VI trophy list</a> · <a href="https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/">PowerPyx — GTA 6 Trophy Guide &amp; Roadmap</a></p>
+  </div>
+  <p>All other 54 trophies: not missable. If you miss a side mission or a collectible, go back for it in free-roam — there is no mission replay, but the open world stays open.</p>
+</section>
+</main>
+<footer class="stats" id="stats"></footer>
+<p class="credit">Names, descriptions and grades are the official list as published on Exophase and PSNProfiles (18 Nov 2026). Guides are written in this guide's own words, with their sources named beside each trophy. No Rockstar logo or artwork is used. Works fully offline — it fetches nothing from the network.</p>
 <script type="module" src="app.js"></script>
 </body>
 </html>
